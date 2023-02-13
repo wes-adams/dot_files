@@ -10,7 +10,8 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 #exec --no-startup-id feh --bg-fill ~/Pictures/mountains.jpg
-exec --no-startup-id feh --bg-fill ~/Pictures/background.jpeg
+#exec --no-startup-id feh --bg-fill ~/Pictures/background.jpeg
+exec --no-startup-id feh --bg-fill ~/Pictures/Zoom-bkgrnd-Grayshift-01.png
 exec --no-startup-id compton
 
 set $mod Mod4
@@ -36,7 +37,8 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec /usr/bin/rxvt-unicode
+#bindsym $mod+Return exec /usr/bin/rxvt-unicode
+bindsym $mod+Return exec /home/wadams/.cargo/bin/alacritty
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -100,29 +102,46 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+set $ws1 "1:Bennu Dev"
+set $ws2 "2:Python Dev"
+set $ws3 "3:Emacs"
+set $ws4 "4:gen"
+set $ws5 "5:Bennu UART"
+set $ws6 "6:Phoenix Dev"
+set $ws7 "7:Web"
+set $ws8 "8:OpenVPN"
+set $ws9 "9:MCUXpresso"
+set $ws10 "10:Email/Slack"
+set $ws11 "11:Config Stuff"
+set $ws12 "12:Zoom/Pavu"
+
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+bindsym $mod+minus workspace $ws11
+bindsym $mod+plus workspace $ws12
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+minus move container to workspace $ws11
+bindsym $mod+Shift+plus move container to workspace $ws12
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -133,6 +152,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # exit i3 (logs you out of your X session)
 # bindsym $mod+x exec "i3lock"
 bindsym $mod+x exec "i3lock-fancy"
+#bindsym $mod+x exec "i3lock"
 
 # You can also use any non-zero value if you'd like to have a border
 for_window [class=".*"] border pixel 5

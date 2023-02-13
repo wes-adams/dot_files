@@ -38,10 +38,18 @@
 *.color15: #fdf6e3
 
 !! URxvt Appearance
-URxvt.font: xft:DejaVuSansMono:style=Regular:size=12
-URxvt.boldFont: xft:DejaVuSansMono:style=Bold:size=12
-URxvt.italicFont: xft:DejaVuSansMono:style=Italic:size=12
-URxvt.boldItalicFont: xft:DejaVuSansMono:style=Bold Italic:size=12
+!URxvt.font: xft:FiraCode:style=Regular:size=12
+!URxvt.boldFont: xft:FiraCode:style=Bold:size=12
+!URxvt.italicFont: xft:FiraCode:style=Italic:size=12
+!Rxvt.boldItalicFont: xft:FiraCode:style=Bold Italic:size=12
+URxvt.font: xft:FiraCode:style=Regular:size=14
+URxvt.boldFont: xft:FiraCode:style=Bold:size=14
+URxvt.italicFont: xft:FiraCode:style=Italic:size=14
+URxvt.boldItalicFont: xft:FiraCode:style=Bold Italic:size=14
+!URxvt.font: xft:DejaVuSansMono:style=Regular:size=12
+!URxvt.boldFont: xft:DejaVuSansMono:style=Bold:size=12
+!URxvt.italicFont: xft:DejaVuSansMono:style=Italic:size=12
+!URxvt.boldItalicFont: xft:DejaVuSansMono:style=Bold Italic:size=12
 !URxvt.font: xft:DejaVuSansMono:style=Regular:size=8
 !URxvt.boldFont: xft:DejaVuSansMono:style=Bold:size=8
 !URxvt.italicFont: xft:DejaVuSansMono:style=Italic:size=8
@@ -55,7 +63,7 @@ URxvt.boldItalicFont: xft:DejaVuSansMono:style=Bold Italic:size=12
 !URxvt.italicFont: xft:Iosevka:style=Italic:size=8
 !URxvt.boldItalicFont: xft:Iosevka:style=Bold Italic:size=8
 URxvt.letterSpace: 0
-URxvt.lineSpace: 0
+URxvt.lineSpace: 3
 URxvt.geometry: 92x24
 URxvt.internalBorder: 24
 URxvt.cursorBlink: true
@@ -66,6 +74,9 @@ URxvt.scrollBar_right: false
 URxvt.urgentOnBell: true
 URxvt.depth: 24
 URxvt.iso14755: false
+
+URxvt*transparent: true
+Rxvt*shading: 3
 
 ! URxvt*termName:                       string
 ! URxvt*geometry:                       geometry

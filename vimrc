@@ -36,6 +36,11 @@ Plug 'sjl/badwolf'
 Plug 'preservim/nerdtree'
 Plug 'rhysd/vim-clang-format'
 Plug 'tomasiser/vim-code-dark'
+Plug 'tribela/vim-transparent'
+Plug 'rust-lang/rust.vim'
+Plug 'preservim/tagbar'
+"Plug 'Exafunction/codeium.vim'
+"Plug 'vim-syntastic/syntastic'
 
 call plug#end()
 
@@ -51,7 +56,17 @@ let g:indent_guides_guide_size=1
 "Plug 'preservim/nerdtree'
 map <C-n> :NERDTreeToggle<CR>
 "Plug 'rhysd/vim-clang-format'
-map <C-z> :ClangFormat<CR>
+"map <C-z> :ClangFormat clang-format-12 -i -style=file<CR>
+"map <C-z> :ClangFormatkCR>
+
+"rust.vim
+syntax enable
+filetype plugin indent on
+map <C-M> :RustRun<CR>
+
+"tagbar
+nmap <F8> :TagbarToggle<CR>
+autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
@@ -166,6 +181,11 @@ set colorcolumn=80
 set cursorline
 highlight ColorColumn ctermbg=lightgrey
 
+highlight DiffAdd    cterm=BOLD ctermfg=NONE ctermbg=22
+highlight DiffDelete cterm=BOLD ctermfg=NONE ctermbg=52
+highlight DiffChange cterm=BOLD ctermfg=NONE ctermbg=23
+highlight DiffText   cterm=BOLD ctermfg=NONE ctermbg=23
+
 set t_Co=256
 set t_tu=
 "colorscheme codedark
@@ -185,6 +205,10 @@ endtry
 
 set background=dark
 
+if &diff
+    colorscheme badwolf
+endif
+
 " Set extra options when running in GUI mode
 if has("gui_running")
     set guioptions-=T
@@ -199,6 +223,7 @@ set encoding=utf8
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
+" set transparency
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -340,6 +365,7 @@ if has("autocmd")
     autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
 endif
 
+nmap <C-g> /<<<<<<<\\|=======\\|>>>>>>><cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => GREP
