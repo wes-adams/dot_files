@@ -1,0 +1,228 @@
+" (N)Vim Configuration File
+" vim  : place in $HOME/.vimrc
+" nvim : place in $HOME/.config/nvim/init.vim
+" $ ln -s $HOME/.config/nvim/init.vim $HOME/.vimrc
+" General settings
+" https://learnvimscriptthehardway.stevelosh.com/
+" ---------------------------------------------------------------------------
+" drop vi support - kept for vim compatibility but not needed for nvim
+" Probably not needed with Vim 8+
+"set nocompatible
+
+" Search recursively downward from CWD; provides TAB completion for filenames
+" e.g., `:find vim* <TAB>`
+set path+=**
+
+" number of lines at the beginning and end of files checked for file-specific vars
+set modelines=0
+
+" reload files changed outside of Vim not currently modified in Vim (needs below)
+set autoread
+
+" http://stackoverflow.com/questions/2490227/how-does-vims-autoread-work#20418591
+au FocusGained,BufEnter * :silent! !
+
+" use Unicode
+set encoding=utf-8
+
+" errors flash screen rather than emit beep
+set visualbell
+
+" make Backspace work like Delete
+set backspace=indent,eol,start
+
+" don't create `filename~` backups
+set nobackup
+
+" don't create temp files
+set noswapfile
+
+" line numbers and distances
+set relativenumber 
+set number 
+
+" number of lines offset when jumping
+set scrolloff=2
+
+" Tab key enters 2 spaces
+" To enter a TAB character when `expandtab` is in effect,
+" CTRL-v-TAB
+set expandtab tabstop=2 shiftwidth=2 softtabstop=2 
+
+" Indent new line the same as the preceding line
+set autoindent
+
+" statusline indicates insert or normal mode
+set showmode showcmd
+
+" make scrolling and painting fast
+" ttyfast kept for vim compatibility but not needed for nvim
+set ttyfast lazyredraw
+
+" highlight matching parens, braces, brackets, etc
+set showmatch
+
+" http://vim.wikia.com/wiki/Searching
+set hlsearch incsearch ignorecase smartcase
+
+" As opposed to `wrap`
+"set nowrap
+
+" http://vim.wikia.com/wiki/Set_working_directory_to_the_current_file
+set autochdir
+
+" open new buffers without saving current modifications (buffer remains open)
+set hidden
+
+" http://stackoverflow.com/questions/9511253/how-to-effectively-use-vim-wildmenu
+set wildmenu wildmode=list:longest,full
+
+" StatusLine always visible, display full path
+" http://learnvimscriptthehardway.stevelosh.com/chapters/17.html
+set laststatus=2 statusline=%F
+
+" Use system clipboard
+" http://vim.wikia.com/wiki/Accessing_the_system_clipboard
+" for linux
+"set clipboard=unnamedplus
+" for macOS
+set clipboard=unnamed
+
+" Folding
+" https://vim.fandom.com/wiki/Folding
+" https://vim.fandom.com/wiki/All_folds_open_when_opening_a_file
+" https://stackoverflow.com/questions/8316139/how-to-set-the-default-to-unfolded-when-you-open-a-file
+set foldmethod=indent
+set foldnestmax=1
+set foldlevelstart=1
+
+" netrw and vim-vinegar
+let g:netrw_browse_split = 3
+
+" Leave Insert mode with jk
+imap jk <Esc>
+
+" Move many lines at once
+map <C-j> 20<C-e>
+map <C-k> 20<C-y>
+
+" With a map leader it's possible to do extra key combinations
+" like <leader>w saves the current file
+let mapleader = ","
+
+" Plugins, syntax, and colors
+" ---------------------------------------------------------------------------
+" vim-plug
+" https://github.com/junegunn/vim-plug
+" Specify a directory for plugins
+" - For Neovim: ~/.local/share/nvim/plugged
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.local/share/nvim/plugged')
+
+" Make sure to use single quotes
+" Install with `:PlugInstall`
+
+" https://github.com/nvim-treesitter/nvim-treesitter
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+" https://github.com/itchyny/lightline.vim
+Plug 'itchyny/lightline.vim'
+
+" https://github.com/tomasiser/vim-code-dark
+Plug 'tomasiser/vim-code-dark'
+
+" https://github.com/Mofiqul/vscode.nvim
+Plug 'Mofiqul/vscode.nvim'
+
+" https://github.com/tpope/vim-commentary
+Plug 'tpope/vim-commentary'
+
+" https://github.com/tpope/vim-surround
+Plug 'tpope/vim-surround'
+
+" https://github.com/tpope/vim-vinegar
+Plug 'tpope/vim-vinegar'
+
+" https://github.com/APZelos/blamer.nvim
+Plug 'APZelos/blamer.nvim'
+
+" https://github.com/simrat39/symbols-outline.nvim
+Plug 'simrat39/symbols-outline.nvim'
+
+" https://github.com/neovim/nvim-lspconfig
+Plug 'neovim/nvim-lspconfig'
+
+" https://github.com/prabirshrestha/vim-lsp
+Plug 'prabirshrestha/vim-lsp'
+
+" https://github.com/MaskRay/ccls
+Plug 'MaskRay/ccls'
+
+" https://github.com/jeaye/color_coded
+Plug 'jeaye/color_coded'
+
+" https://github.com/fenetikm/falcon/wiki/Installation
+" Plug 'fenetikm/falcon'
+
+" https://github.com/macguirerintoul/night_owl_light.vim
+" Plug 'macguirerintoul/night_owl_light.vim'
+
+Plug 'kien/ctrlp.vim' 
+Plug 'itchyny/lightline.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'airblade/vim-gitgutter'
+Plug 'sjl/badwolf'
+Plug 'preservim/nerdtree'
+Plug 'rhysd/vim-clang-format'
+Plug 'tomasiser/vim-code-dark'
+
+" Initialize plugin system
+call plug#end()
+
+"Plug 'kien/ctrlp.vim' 
+nmap <C-p> CtrlP
+let g:ctrlp_working_path_mode = ''
+"Plug 'sjl/badwolf'
+let g:badwolf_darkgutter = 1
+let g:badwolf_tabline = 0
+"Plug 'nathanaelkane/vim-indent-guides'
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
+"Plug 'preservim/nerdtree'
+map <C-n> :NERDTreeToggle<CR>
+"Plug 'rhysd/vim-clang-format'
+map <C-z> :ClangFormat<CR>
+
+
+
+syntax enable
+" Neovim only
+set termguicolors 
+
+" Light scheme
+" colorscheme night_owl_light
+
+" Dark scheme
+" colorscheme falcon
+colorscheme codedark
+set background=dark
+
+" Show character column
+set colorcolumn=80
+
+" lightline config - add file 'absolutepath'
+" Delete colorscheme line below if using Dark scheme
+
+let g:lightline = {
+      \ 'colorscheme': 'PaperColor_light',
+      \ 'actie': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'absolutepath', 'modified' ] ]
+      \ }
+      \ }
+
+let g:blamer_enabled = 1
+" %a is the day of week, in case it's needed
+let g:blamer_date_format = '%e %b %Y'
+highlight Blamer guifg=darkorangev
