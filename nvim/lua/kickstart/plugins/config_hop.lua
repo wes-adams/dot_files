@@ -1,0 +1,15 @@
+-- [[ Configure HOP ]]
+local hop = require("hop")
+local directions = require("hop.hint").HintDirection
+vim.keymap.set("n", "<leader>hW", function()
+	hop.hint_words({ direction = directions.BEFORE_CURSOR, current_line_only = false })
+end, { desc = "[H]op [W]ord Back", remap = true })
+vim.keymap.set("n", "<leader>hw", function()
+	hop.hint_words({ direction = directions.AFTER_CURSOR, current_line_only = false })
+end, { desc = "[H]op [w]ord Forward", remap = true })
+vim.keymap.set("n", "<leader>hL", function()
+	hop.hint_lines({ direction = directions.BEFORE_CURSOR, current_line_only = false })
+end, { desc = "[H]op [L]ine Back", remap = true })
+vim.keymap.set("n", "<leader>hl", function()
+	hop.hint_lines({ direction = directions.AFTER_CURSOR, current_line_only = false })
+end, { desc = "[H]op [l]ine Forward", remap = true })
